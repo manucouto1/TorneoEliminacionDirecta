@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<querys>
+	<query name="findAll">
+		<script>SELECT * FROM PARTICIPANTE;</script>
+	</query>
+	<query name="findOne">
+		<script>SELECT * FROM PARTICIPANTE WHERE id = [id];</script>
+	</query>
+	<query name="add" var="participante">
+		<script>INSERT INTO PARTICIPANTE VALUES ([participante.id],[participante.name]);</script>
+	</query>
+	<query name="delete" var="participante">
+		<script>DELETE FROM AUTOR WHERE ID = [participante.id];</script>
+	</query>
+</querys>

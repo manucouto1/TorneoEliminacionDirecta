@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<querys>
+	<query name="findAll">
+		<script>SELECT * FROM PARTIDO;</script>
+	</query>
+	<query name="findOne">
+		<script>SELECT * FROM PARTIDO WHERE id = [id];</script>
+	</query>
+	<query name="add" var="participante">
+		<script>INSERT INTO PARTIDO VALUES ([partido.id],[partido.name]);</script>
+	</query>
+	<query name="delete" var="partido">
+		<script>DELETE FROM AUTOR WHERE ID = [partido.id];</script>
+	</query>
+</querys>
