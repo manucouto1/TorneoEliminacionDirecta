@@ -2,8 +2,7 @@ package dominio.entidades;
 
 public class Partido {
 	
-	private int id;
-	private String code;
+	private String id;
 	private int local;
 	private int visitante;
 	private int ganador;
@@ -11,29 +10,20 @@ public class Partido {
 	
 	public Partido(){}
 	
-	public Partido(int id, String code, int local, int visitante, int ganador, int estado) {
+	public Partido(String id, int local, int visitante, int ganador, int estado) {
 		this.id = id;
-		this.code = code;
 		this.local = local;
 		this.visitante = visitante;
 		this.ganador = ganador;
 		this.estado = estado;
 	}
 
-	public int getId() {
+	public String getId() {
 		return id;
 	}
 
-	public void setId(int id) {
+	public void setId(String id) {
 		this.id = id;
-	}
-
-	public String getCode() {
-		return code;
-	}
-
-	public void setCode(String code) {
-		this.code = code;
 	}
 
 	public int getLocal() {
@@ -70,7 +60,7 @@ public class Partido {
 
 	@Override
 	public String toString() {
-		return "Partido [id=" + id + ", code=" + code + ", local=" + local + ", visitante=" + visitante + ", ganador="
+		return "Partido [id=" + id + ", local=" + local + ", visitante=" + visitante + ", ganador="
 				+ ganador + ", estado=" + estado + "]";
 	}
 	

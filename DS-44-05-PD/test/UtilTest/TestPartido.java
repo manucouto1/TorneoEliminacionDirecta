@@ -5,9 +5,7 @@
  */
 package UtilTest;
 
-import contenedor.Container;
 import dominio.Partido;
-import dominio.Torneo;
 import dominio.estado.State;
 import dominio.jugador.CabezaSerie;
 import dominio.jugador.Jugador;
@@ -22,6 +20,7 @@ import java.util.List;
 import java.util.Map;
 import matcher.Matcher;
 import matcher.SeededMatcher;
+import torneo.Torneo;
 import treeModel.Nodo;
 import treeModel.NodoPartido;
 
@@ -32,13 +31,15 @@ import static org.junit.Assert.assertTrue;
 import org.junit.Before;
 import org.junit.Test;
 
+import cache.TournmentCache;
+
 /**
  *
  * @author manuc
  */
 public class TestPartido {
     
-    private Container c = new Container();
+    private TournmentCache c = new TournmentCache();
     private Torneo t;
     private TorneoManager tmng = new TorneoManagerImpl();
     private PartidoManager pmng = new PartidoManagerImpl();

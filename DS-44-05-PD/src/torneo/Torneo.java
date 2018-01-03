@@ -3,7 +3,7 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package dominio;
+package torneo;
 
 import dominio.jugador.Jugador;
 import matcher.Matcher;

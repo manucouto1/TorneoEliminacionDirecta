@@ -5,8 +5,6 @@
  */
 package UtilTest;
 
-import contenedor.Container;
-import dominio.Torneo;
 import dominio.estado.State;
 import dominio.jugador.CabezaSerie;
 import dominio.jugador.Jugador;
@@ -21,11 +19,15 @@ import java.util.List;
 import matcher.Matcher;
 import matcher.RandomeMatcher;
 import matcher.SeededMatcher;
+import torneo.Torneo;
+
 import static org.hamcrest.CoreMatchers.is;
 import static org.junit.Assert.assertEquals;
 import static org.junit.Assert.assertThat;
 import static org.junit.Assert.assertTrue;
 import org.junit.Test;
+
+import cache.TournmentCache;
 
 /**
  *
@@ -33,7 +35,7 @@ import org.junit.Test;
  */
 public class TestTorneo {
     
-    private Container c = new Container();
+    private TournmentCache c = new TournmentCache();
     private Torneo t;
     private TorneoManager tmng = new TorneoManagerImpl();
     

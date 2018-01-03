@@ -5,14 +5,15 @@
  */
 package manager.impl;
 
-import contenedor.Container;
-import dominio.Torneo;
 import dominio.jugador.Jugador;
 import dominio.tipos.TournmentType;
 import java.util.List;
 import java.util.logging.Level;
 import java.util.logging.Logger;
+
+import cache.TournmentCache;
 import manager.TorneoManager;
+import torneo.Torneo;
 
 /**
  *
@@ -21,12 +22,12 @@ import manager.TorneoManager;
 public class TorneoManagerImpl implements TorneoManager{
     
     @Override
-    public boolean crearTorneo(Container c, String name, TournmentType tipo) {
+    public boolean crearTorneo(TournmentCache c, String name, TournmentType tipo) {
         return c.addTorneo(name, tipo);
     }
 
     @Override
-    public Torneo seleccionarTorneo(Container c, String nombre) {
+    public Torneo seleccionarTorneo(TournmentCache c, String nombre) {
         try {
             return c.getTorneo(nombre);
         } catch (Exception ex) {

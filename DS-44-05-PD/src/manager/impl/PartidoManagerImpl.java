@@ -6,11 +6,11 @@
 package manager.impl;
 
 import dominio.Partido;
-import dominio.Torneo;
 import dominio.estado.State;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 import manager.PartidoManager;
+import torneo.Torneo;
 import treeModel.NodoJugador;
 import treeModel.NodoPartido;
 
@@ -22,6 +22,10 @@ public class PartidoManagerImpl implements PartidoManager{
     
     @Override
     public Partido findPartido(Torneo torneo, String code) throws Exception{
+    	Partido partido = torneo.findPartido(code).getPartido();
+    	if(partido == null) {
+    		
+    	}
         return torneo.findPartido(code).getPartido();
     }
 

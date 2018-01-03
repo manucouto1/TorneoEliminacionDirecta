@@ -6,7 +6,7 @@
 package manager;
 
 import dominio.Partido;
-import dominio.Torneo;
+import torneo.Torneo;
 
 /**
  *

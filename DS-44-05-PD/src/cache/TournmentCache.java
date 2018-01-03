@@ -3,13 +3,14 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package contenedor;
+package cache;
 
-import dominio.Torneo;
 //import dominio.TorneoED;
 import dominio.tipos.TournmentType;
-import factory.TorneoEDFactory;
-import factory.TorneoFactory;
+import torneo.Torneo;
+import torneo.factory.TorneoEDFactory;
+import torneo.factory.TorneoFactory;
+
 import java.util.HashMap;
 import java.util.Map;
 
@@ -17,7 +18,7 @@ import java.util.Map;
  *
  * @author manuc
  */
-public class Container {
+public class TournmentCache {
     
         private final Map<String, Torneo> tournments = new HashMap<>();
         private boolean empty = true;

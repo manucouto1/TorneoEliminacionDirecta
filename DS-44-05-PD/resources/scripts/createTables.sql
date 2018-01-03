@@ -23,7 +23,7 @@ CREATE TABLE `Jugador` (
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8
 
 CREATE TABLE `Partido` (
-  `id` int(9) NOT NULL,
+  `id` varchar(15) NOT NULL,
   `code` varchar(15) DEFAULT NULL,
   `jugador_local_id` int(9) DEFAULT NULL,
   `jugador_visitante_id` int(9) DEFAULT NULL,
@@ -48,7 +48,7 @@ CREATE TABLE `Torneo` (
 
 CREATE TABLE `Torneo_Partido` (
   `id_torneo` int(9) NOT NULL,
-  `id_partido` int(9) NOT NULL,
+  `id_partido` varchar(15) NOT NULL,
   PRIMARY KEY (`id_torneo`,`id_partido`),
   KEY `id_torneo` (`id_torneo`),
   CONSTRAINT `id_torneofk_1` FOREIGN KEY (`id_torneo`) REFERENCES `torneo` (`id`),

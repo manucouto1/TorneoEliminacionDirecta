@@ -5,12 +5,13 @@
  */
 package UtilTest;
 
-import contenedor.Container;
 import dominio.tipos.TournmentType;
 import static org.hamcrest.CoreMatchers.is;
 import static org.junit.Assert.assertThat;
 import static org.junit.Assert.assertTrue;
 import org.junit.Test;
+
+import cache.TournmentCache;
 
 /**
  *
@@ -20,7 +21,7 @@ public class TestContainer {
     
     @Test
     public void createTorunmentTest() throws Exception {
-        Container c = new Container();
+        TournmentCache c = new TournmentCache();
         assertTrue(c.addTorneo("testTorneo", TournmentType.TED));
         assertTrue(null!=c.getTorneo("testTorneo"));
         c.listTorneos();
@@ -29,7 +30,7 @@ public class TestContainer {
     
     @Test
     public void createTorunmentYaExistenteTest() {
-        Container c = new Container();
+        TournmentCache c = new TournmentCache();
         
         c.addTorneo("testTorneo", TournmentType.TED);
         try {

@@ -3,11 +3,13 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package dominio;
+package torneo;
 
 
 import java.util.Deque;
 import dominio.jugador.Jugador;
+import dominio.Partido;
+import dominio.Ronda;
 import dominio.estado.State;
 import dominio.jugador.CabezaSerie;
 import dominio.tipos.TournmentType;

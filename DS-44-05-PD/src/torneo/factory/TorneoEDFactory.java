@@ -3,11 +3,11 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package factory;
+package torneo.factory;
 
-import dominio.Torneo;
-import dominio.TorneoED;
 import dominio.tipos.TournmentType;
+import torneo.Torneo;
+import torneo.TorneoED;
 
 /**
  *
