@@ -19,8 +19,8 @@ public class TorneoFacadeImpl implements TorneoFacade{
 	private Factory factory;
 	
 	public TorneoFacadeImpl (Container container){
-		this.torneoDao = container.getDao(Torneo.class);
-		this.jugadorDao = container.getDao(Jugador.class);
+		this.torneoDao = container.getDao(TorneoDao.class);
+		this.jugadorDao = container.getDao(JugadorDao.class);
 	}
 
 	@Override

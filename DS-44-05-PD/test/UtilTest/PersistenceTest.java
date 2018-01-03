@@ -5,6 +5,7 @@ import static org.junit.Assert.*;
 import java.util.Arrays;
 import java.util.List;
 
+import org.apache.log4j.BasicConfigurator;
 import org.junit.Before;
 import org.junit.Test;
 
@@ -32,6 +33,7 @@ public class PersistenceTest {
     
 	@Before
 	public void pre() throws Exception {
+		BasicConfigurator.configure();
     	c.put(JugadorDao.class);
     	c.put(PartidoDao.class);
     	c.put(TorneoDao.class);

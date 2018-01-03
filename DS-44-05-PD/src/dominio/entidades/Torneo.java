@@ -1,8 +1,9 @@
 package dominio.entidades;
 
+import new_tech_dev.development.base_entity.BaseEntity;
 import torneo.TorneoValue;
 
-public class Torneo {
+public class Torneo extends BaseEntity{
 	
 	private int id;
 	private String codigo;
@@ -28,7 +29,7 @@ public class Torneo {
 		this.estado = builder.estado;
 	}
 
-	public int getId() {
+	public Integer getId() {
 		return id;
 	}
 
