@@ -11,7 +11,7 @@ package dominio.jugador;
  *
  * @author manuc
  */
-public final class CabezaSerie extends Jugador{
+public final class CabezaSerie extends JugadorValue{
     
     private CabezaSerie(Builder builder) {
         super("CabezaSerie "+builder.name, builder.years);

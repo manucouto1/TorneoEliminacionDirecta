@@ -8,7 +8,7 @@ package dominio;
 
 import java.util.HashMap;
 import java.util.Map;
-import dominio.jugador.Jugador;
+import dominio.jugador.JugadorValue;
 import dominio.estado.State;
 import java.util.Objects;
 
@@ -18,11 +18,11 @@ import java.util.Objects;
  */
 public final class Partido{
 
-    private Jugador local;
-    private Jugador visitante;
+    private JugadorValue local;
+    private JugadorValue visitante;
     private State state;
-    private Map<Jugador,Integer> marcador;
-    private Jugador ganador = null;
+    private Map<JugadorValue,Integer> marcador;
+    private JugadorValue ganador = null;
     private String code;
     
     public Partido (String code) {
@@ -30,7 +30,7 @@ public final class Partido{
         this.code = code;
     }
     
-    public State asignarEquipos(Jugador local, Jugador visitante) throws Exception{
+    public State asignarEquipos(JugadorValue local, JugadorValue visitante) throws Exception{
         this.local = local;
         this.visitante = visitante;
         if(this.visitante!= null && this.local != null){
@@ -73,7 +73,7 @@ public final class Partido{
         return state;
     }
     
-    public Jugador ganador() throws Exception {
+    public JugadorValue ganador() throws Exception {
        
         if(state == State.FINALIZADO){
             return this.ganador;
@@ -84,7 +84,7 @@ public final class Partido{
    
     // Marca un gol para el jugador o equipo seleccionado
     // Method DEPRECATED
-    public Map<Jugador,Integer> marcar (Jugador jugador) throws Exception{
+    public Map<JugadorValue,Integer> marcar (JugadorValue jugador) throws Exception{
         if(jugador == local || jugador == visitante) {
             if(state == State.EN_JUEGO){
                 Integer aux = marcador.get(jugador);
@@ -100,19 +100,19 @@ public final class Partido{
     
 //  Getters y Setters
 
-    public Jugador getLocal() {
+    public JugadorValue getLocal() {
         return local;
     }
 
-    public void setLocal(Jugador local) {
+    public void setLocal(JugadorValue local) {
         this.local = local;
     }
 
-    public Jugador getVisitante() {
+    public JugadorValue getVisitante() {
         return visitante;
     }
 
-    public void setVisitante(Jugador visitante) {
+    public void setVisitante(JugadorValue visitante) {
         this.visitante = visitante;
     }
     
@@ -128,11 +128,11 @@ public final class Partido{
         this.code = code;
     }
 
-    public Map<Jugador, Integer> getMarcador() {
+    public Map<JugadorValue, Integer> getMarcador() {
         return marcador;
     }
 
-    public void setMarcador(Map<Jugador, Integer> marcador) {
+    public void setMarcador(Map<JugadorValue, Integer> marcador) {
         this.marcador = marcador;
     }
     

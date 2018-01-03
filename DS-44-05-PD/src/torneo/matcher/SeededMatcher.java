@@ -3,10 +3,10 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package matcher;
+package torneo.matcher;
 
 import dominio.jugador.CabezaSerie;
-import dominio.jugador.Jugador;
+import dominio.jugador.JugadorValue;
 import java.util.ArrayDeque;
 import java.util.Deque;
 import java.util.LinkedList;
@@ -19,10 +19,10 @@ import java.util.List;
 public class SeededMatcher implements Matcher{
 
     @Override
-    public Deque<Jugador> matchPlayers(Deque<Jugador> jugadores) {
-        Deque<Jugador> result = new ArrayDeque<>();
-        List<Jugador> list = new LinkedList<>();
-        List<Jugador> listC = new LinkedList<>();
+    public Deque<JugadorValue> matchPlayers(Deque<JugadorValue> jugadores) {
+        Deque<JugadorValue> result = new ArrayDeque<>();
+        List<JugadorValue> list = new LinkedList<>();
+        List<JugadorValue> listC = new LinkedList<>();
         jugadores.forEach((jugador) -> {
             System.out.println("@@## JugadorName > "+jugador.getName());
             if(jugador instanceof CabezaSerie){
@@ -40,7 +40,7 @@ public class SeededMatcher implements Matcher{
             System.out.println(" @@## aux >> "+aux+" > % > "+counter%aux);
             int aleatorio1 =  (int) Math.floor(Math.random()*(list.size()));
             int aleatorio =  (int) Math.floor(Math.random()*(listC.size()));
-            Jugador jugador = null ;
+            JugadorValue jugador = null ;
             if(counter%aux==0&&!listC.isEmpty()){
                 jugador = listC.remove(aleatorio);
             }else{
@@ -56,10 +56,10 @@ public class SeededMatcher implements Matcher{
     }
 
     @Override
-    public Deque<Jugador> matchPlayers(List<Jugador> jugadores) {
-        Deque<Jugador> result = new ArrayDeque<>();
-        List<Jugador> list = new LinkedList<>();
-        List<Jugador> listC = new LinkedList<>();
+    public Deque<JugadorValue> matchPlayers(List<JugadorValue> jugadores) {
+        Deque<JugadorValue> result = new ArrayDeque<>();
+        List<JugadorValue> list = new LinkedList<>();
+        List<JugadorValue> listC = new LinkedList<>();
         jugadores.forEach((jugador) -> {
             System.out.println("@@## JugadorName > "+jugador.getName());
             if(jugador instanceof CabezaSerie){
@@ -77,7 +77,7 @@ public class SeededMatcher implements Matcher{
             System.out.println(" @@## aux >> "+aux+" > % > "+counter%aux);
             int aleatorio1 =  (int) Math.floor(Math.random()*(list.size()));
             int aleatorio =  (int) Math.floor(Math.random()*(listC.size()));
-            Jugador jugador = null ;
+            JugadorValue jugador = null ;
             if(counter%aux==0&&!listC.isEmpty()){
                 jugador = listC.remove(aleatorio);
             }else{

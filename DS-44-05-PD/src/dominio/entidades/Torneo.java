@@ -1,11 +1,11 @@
 package dominio.entidades;
 
+import torneo.TorneoValue;
 
 public class Torneo {
 	
 	private int id;
-	private String nombre;
-	private int edad;
+	private String codigo;
 	private int tipo;
 	private int estado;
 	
@@ -14,11 +14,18 @@ public class Torneo {
 		
 	}
 	
-	public Torneo(int id, String nombre, int edad, int tipo, int estado) {
+	public Torneo(int id, String codigo, int tipo, int estado) {
 		this.id = id;
-		this.nombre = nombre;
-		this.edad = edad;
+		this.codigo = codigo;
+		this.tipo = tipo;
 		this.estado = estado;
+	}
+	
+	public Torneo (Builder builder) {
+		this.id = builder.id;
+		this.codigo = builder.codigo;
+		this.tipo = builder.tipo;
+		this.estado = builder.estado;
 	}
 
 	public int getId() {
@@ -29,20 +36,20 @@ public class Torneo {
 		this.id = id;
 	}
 
-	public String getNombre() {
-		return nombre;
+	public String getCodigo() {
+		return codigo;
 	}
 
-	public void setNombre(String nombre) {
-		this.nombre = nombre;
+	public void setCodigo(String codigo) {
+		this.codigo = codigo;
 	}
 
-	public int getEdad() {
-		return edad;
+	public int getTipo() {
+		return tipo;
 	}
 
-	public void setEdad(int edad) {
-		this.edad = edad;
+	public void setTipo(int tipo) {
+		this.tipo = tipo;
 	}
 
 	public int getEstado() {
@@ -52,20 +59,35 @@ public class Torneo {
 	public void setEstado(int estado) {
 		this.estado = estado;
 	}
-	
-	public int getTipo(){
-		return tipo;
-	}
-	
-	public void setTipo(int tipo){
-		this.tipo = tipo;
-	}
+
 	
 	@Override
 	public String toString() {
-		return "Torneo [id=" + id + ", nombre=" + nombre + ", edad=" + edad + ", estado=" + estado + "]";
+		return "Torneo [id=" + id + ", codigo=" + codigo + ", tipo=" + tipo + ", estado=" + estado + "]";
 	}
-	
-	
+
+
+	public static class Builder {
+		private int id;
+		private final String codigo;
+		private final int tipo;
+		private final int estado;
+		
+		public Builder(TorneoValue torneo){
+			
+			this.codigo = torneo.getCodigo();
+			this.tipo = torneo.getTipo().getId();
+			this.estado = torneo.getEstado().getId();
+		}
+		
+		public Builder setId(int id){
+			this.id = id;
+			return this;
+		}
+		
+		public Torneo build(){
+			return new Torneo(this);
+		}
+	}
 	
 }

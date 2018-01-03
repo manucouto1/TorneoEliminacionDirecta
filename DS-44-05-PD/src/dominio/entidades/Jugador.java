@@ -16,7 +16,7 @@ public class Jugador {
 		this.edad = edad;
 		this.tipo = tipo;
 	}
-
+	
 	public int getId() {
 		return id;
 	}
@@ -53,6 +53,8 @@ public class Jugador {
 	public String toString() {
 		return "Jugador [id=" + id + ", nombre=" + nombre + ", edad=" + edad + ", tipo=" + tipo + "]";
 	}
+	
+	
 	
 	
 }

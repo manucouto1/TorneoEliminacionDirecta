@@ -21,11 +21,11 @@ public class main {
      */
     public static void main(String[] args) throws Exception {
     	
-    	Container c = new Container();
-    	c.put(JugadorDao.class);
-    	c.put(PartidoDao.class);
-    	
-    	TournmentCache cache = new TournmentCache(c);
+//    	Container c = new Container();
+//    	c.put(JugadorDao.class);
+//    	c.put(PartidoDao.class);
+//    	
+//    	TournmentCache cache = new TournmentCache(c);
     	
     	
     	

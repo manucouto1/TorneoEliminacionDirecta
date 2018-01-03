@@ -5,7 +5,7 @@
  */
 package manager.impl;
 
-import dominio.jugador.Jugador;
+import dominio.jugador.JugadorValue;
 import dominio.tipos.TournmentType;
 import java.util.List;
 import java.util.logging.Level;
@@ -37,12 +37,12 @@ public class TorneoManagerImpl implements TorneoManager{
     }
     
     @Override
-    public <T extends Jugador>  void inscribirJugador(TorneoValue torneo, T jugador) {
+    public <T extends JugadorValue>  void inscribirJugador(TorneoValue torneo, T jugador) {
         torneo.inscribirJugador(jugador);
     }
 
     @Override
-    public <T extends Jugador> void inscribirJugadores(TorneoValue torneo, List<T> jugadores) {
+    public <T extends JugadorValue> void inscribirJugadores(TorneoValue torneo, List<T> jugadores) {
         torneo.inscribirJugadores(jugadores);
     }
 

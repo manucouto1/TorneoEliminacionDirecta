@@ -28,6 +28,10 @@ public class TournmentCache {
         public TournmentCache(Container c){
         	this.c = c;
         }
+        
+        public Container getContainer(){
+        	return this.c;
+        }
 //        private TorneoFactory factory;
         
         public boolean addTorneo(String nombre, TournmentType tipo) {

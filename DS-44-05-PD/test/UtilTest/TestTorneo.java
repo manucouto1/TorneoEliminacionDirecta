@@ -7,7 +7,7 @@ package UtilTest;
 
 import dominio.estado.State;
 import dominio.jugador.CabezaSerie;
-import dominio.jugador.Jugador;
+import dominio.jugador.JugadorValue;
 import dominio.tipos.TournmentType;
 import manager.TorneoManager;
 import manager.impl.TorneoManagerImpl;
@@ -16,11 +16,12 @@ import java.util.ArrayDeque;
 import java.util.Arrays;
 import java.util.Deque;
 import java.util.List;
-import matcher.Matcher;
-import matcher.RandomeMatcher;
-import matcher.SeededMatcher;
+
 import new_tech_dev.development.container.Container;
 import torneo.TorneoValue;
+import torneo.matcher.Matcher;
+import torneo.matcher.RandomeMatcher;
+import torneo.matcher.SeededMatcher;
 
 import static org.hamcrest.CoreMatchers.is;
 import static org.junit.Assert.assertEquals;
@@ -39,7 +40,7 @@ import cache.TournmentCache;
 public class TestTorneo {
     
 	private Container c = new Container();
-    private TournmentCache cache ;
+    private TournmentCache cache;
     private TorneoValue t;
     private TorneoManager tmng = new TorneoManagerImpl();
     
@@ -79,7 +80,7 @@ public class TestTorneo {
     public void testInscribirJugador() {
         tmng.crearTorneo(cache, "testTorneo", TournmentType.TED);
         t=tmng.seleccionarTorneo(cache, "testTorneo");
-        Jugador p = new Jugador("1",18);
+        JugadorValue p = new JugadorValue("1",18);
         tmng.inscribirJugador(t,p);
         assertEquals(t.getJugadores().getFirst(),p);
     }
@@ -88,14 +89,14 @@ public class TestTorneo {
     public void testInscribirJugadores() {
         tmng.crearTorneo(cache, "testTorneo", TournmentType.TED);
         t=tmng.seleccionarTorneo(cache, "testTorneo");
-        List<Jugador> test0 = Arrays.asList(new CabezaSerie.Builder("1",18).build(), 
+        List<JugadorValue> test0 = Arrays.asList(new CabezaSerie.Builder("1",18).build(), 
                 new CabezaSerie.Builder("2",18).build(), new CabezaSerie.Builder("3",18).build(), 
-                new Jugador("4",18), new Jugador("5",18), new Jugador("6",18), 
-                new Jugador("7",18), new Jugador("8",18), new Jugador("9",18), 
-                new Jugador("10",18), new Jugador("11",18), new Jugador("12",18), 
-                new Jugador("13",18), new Jugador("14",18), new Jugador("15",18), 
-                new Jugador("16",18));
-        Deque<Jugador> list = new ArrayDeque<>(test0);
+                new JugadorValue("4",18), new JugadorValue("5",18), new JugadorValue("6",18), 
+                new JugadorValue("7",18), new JugadorValue("8",18), new JugadorValue("9",18), 
+                new JugadorValue("10",18), new JugadorValue("11",18), new JugadorValue("12",18), 
+                new JugadorValue("13",18), new JugadorValue("14",18), new JugadorValue("15",18), 
+                new JugadorValue("16",18));
+        Deque<JugadorValue> list = new ArrayDeque<>(test0);
         tmng.inscribirJugadores(t, test0);
         assertEquals(t.getJugadores().size(),list.size());
     }
@@ -106,13 +107,13 @@ public class TestTorneo {
         t=tmng.seleccionarTorneo(cache, "testTorneo");
         Matcher matcher = new SeededMatcher();
         t.setMatcher(matcher);
-        List<Jugador> test0 = Arrays.asList(new CabezaSerie.Builder("1",18).build(), 
+        List<JugadorValue> test0 = Arrays.asList(new CabezaSerie.Builder("1",18).build(), 
                 new CabezaSerie.Builder("2",18).build(), new CabezaSerie.Builder("3",18).build(), 
-                new Jugador("4",18), new Jugador("5",18), new Jugador("6",18), 
-                new Jugador("7",18), new Jugador("8",18), new Jugador("9",18), 
-                new Jugador("10",18), new Jugador("11",18), new Jugador("12",18), 
-                new Jugador("13",18), new Jugador("14",18), new Jugador("15",18), 
-                new Jugador("16",18));
+                new JugadorValue("4",18), new JugadorValue("5",18), new JugadorValue("6",18), 
+                new JugadorValue("7",18), new JugadorValue("8",18), new JugadorValue("9",18), 
+                new JugadorValue("10",18), new JugadorValue("11",18), new JugadorValue("12",18), 
+                new JugadorValue("13",18), new JugadorValue("14",18), new JugadorValue("15",18), 
+                new JugadorValue("16",18));
         tmng.inscribirJugadores(t, test0);
         tmng.prepararTorneo(t);
         assertEquals(t.getEstado(), State.NO_JUGADO);
@@ -124,12 +125,12 @@ public class TestTorneo {
         t=tmng.seleccionarTorneo(cache, "testTorneo");
         Matcher matcher = new RandomeMatcher();
         t.setMatcher(matcher);
-        List<Jugador> test0 = Arrays.asList(new CabezaSerie.Builder("1",18).build(), 
+        List<JugadorValue> test0 = Arrays.asList(new CabezaSerie.Builder("1",18).build(), 
                 new CabezaSerie.Builder("2",18).build(), new CabezaSerie.Builder("3",18).build(), 
-                new Jugador("4",18), new Jugador("5",18), new Jugador("6",18), 
-                new Jugador("7",18), new Jugador("8",18), new Jugador("9",18), 
-                new Jugador("10",18), new Jugador("11",18), new Jugador("12",18), 
-                new Jugador("13",18), new Jugador("14",18), new Jugador("15",18));
+                new JugadorValue("4",18), new JugadorValue("5",18), new JugadorValue("6",18), 
+                new JugadorValue("7",18), new JugadorValue("8",18), new JugadorValue("9",18), 
+                new JugadorValue("10",18), new JugadorValue("11",18), new JugadorValue("12",18), 
+                new JugadorValue("13",18), new JugadorValue("14",18), new JugadorValue("15",18));
         tmng.inscribirJugadores(t, test0);
         try {
             tmng.prepararTorneo(t);
@@ -145,13 +146,13 @@ public class TestTorneo {
         t=tmng.seleccionarTorneo(cache, "testTorneo");
         Matcher matcher = new SeededMatcher();
         t.setMatcher(matcher);
-        List<Jugador> test0 = Arrays.asList(new CabezaSerie.Builder("1",18).build(), 
+        List<JugadorValue> test0 = Arrays.asList(new CabezaSerie.Builder("1",18).build(), 
                 new CabezaSerie.Builder("2",18).build(), new CabezaSerie.Builder("3",18).build(), 
-                new Jugador("4",18), new Jugador("5",18), new Jugador("6",18), 
-                new Jugador("7",18), new Jugador("8",18), new Jugador("9",18), 
-                new Jugador("10",18), new Jugador("11",18), new Jugador("12",18), 
-                new Jugador("13",18), new Jugador("14",18), new Jugador("15",18), 
-                new Jugador("16",18));
+                new JugadorValue("4",18), new JugadorValue("5",18), new JugadorValue("6",18), 
+                new JugadorValue("7",18), new JugadorValue("8",18), new JugadorValue("9",18), 
+                new JugadorValue("10",18), new JugadorValue("11",18), new JugadorValue("12",18), 
+                new JugadorValue("13",18), new JugadorValue("14",18), new JugadorValue("15",18), 
+                new JugadorValue("16",18));
         tmng.inscribirJugadores(t, test0);
         tmng.prepararTorneo(t);
         assertTrue(tmng.iniciarTorneo(t));
@@ -163,13 +164,13 @@ public class TestTorneo {
         t=tmng.seleccionarTorneo(cache, "testTorneo");
         Matcher matcher = new SeededMatcher();
         t.setMatcher(matcher);
-        List<Jugador> test0 = Arrays.asList(new CabezaSerie.Builder("1",18).build(), 
+        List<JugadorValue> test0 = Arrays.asList(new CabezaSerie.Builder("1",18).build(), 
                 new CabezaSerie.Builder("2",18).build(), new CabezaSerie.Builder("3",18).build(), 
-                new Jugador("4",18), new Jugador("5",18), new Jugador("6",18), 
-                new Jugador("7",18), new Jugador("8",18), new Jugador("9",18), 
-                new Jugador("10",18), new Jugador("11",18), new Jugador("12",18), 
-                new Jugador("13",18), new Jugador("14",18), new Jugador("15",18), 
-                new Jugador("16",18));
+                new JugadorValue("4",18), new JugadorValue("5",18), new JugadorValue("6",18), 
+                new JugadorValue("7",18), new JugadorValue("8",18), new JugadorValue("9",18), 
+                new JugadorValue("10",18), new JugadorValue("11",18), new JugadorValue("12",18), 
+                new JugadorValue("13",18), new JugadorValue("14",18), new JugadorValue("15",18), 
+                new JugadorValue("16",18));
         tmng.inscribirJugadores(t, test0);
         try{
         assertEquals(false, tmng.iniciarTorneo(t));
@@ -184,13 +185,13 @@ public class TestTorneo {
         t=tmng.seleccionarTorneo(cache, "testTorneo");
         Matcher matcher = new SeededMatcher();
         t.setMatcher(matcher);
-        List<Jugador> test0 = Arrays.asList(new CabezaSerie.Builder("1",18).build(), 
+        List<JugadorValue> test0 = Arrays.asList(new CabezaSerie.Builder("1",18).build(), 
                 new CabezaSerie.Builder("2",18).build(), new CabezaSerie.Builder("3",18).build(), 
-                new Jugador("4",18), new Jugador("5",18), new Jugador("6",18), 
-                new Jugador("7",18), new Jugador("8",18), new Jugador("9",18), 
-                new Jugador("10",18), new Jugador("11",18), new Jugador("12",18), 
-                new Jugador("13",18), new Jugador("14",18), new Jugador("15",18), 
-                new Jugador("16",18));
+                new JugadorValue("4",18), new JugadorValue("5",18), new JugadorValue("6",18), 
+                new JugadorValue("7",18), new JugadorValue("8",18), new JugadorValue("9",18), 
+                new JugadorValue("10",18), new JugadorValue("11",18), new JugadorValue("12",18), 
+                new JugadorValue("13",18), new JugadorValue("14",18), new JugadorValue("15",18), 
+                new JugadorValue("16",18));
         tmng.inscribirJugadores(t, test0);
         tmng.prepararTorneo(t);
         tmng.iniciarTorneo(t);

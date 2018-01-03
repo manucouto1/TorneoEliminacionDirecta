@@ -6,7 +6,7 @@
 package treeModel;
 
 
-import dominio.jugador.Jugador;
+import dominio.jugador.JugadorValue;
 
 /**
  *
@@ -14,18 +14,18 @@ import dominio.jugador.Jugador;
  */
 public class NodoJugador extends Nodo{
     
-    private Jugador jugador;
+    private JugadorValue jugador;
     
-    public NodoJugador(int peso, Jugador jugador) {
+    public NodoJugador(int peso, JugadorValue jugador) {
         super(peso);
         this.jugador = jugador;
     }
 
-    public Jugador getJugador() {
+    public JugadorValue getJugador() {
         return jugador;
     }
 
-    public void setJugador(Jugador jugador) {
+    public void setJugador(JugadorValue jugador) {
         this.jugador = jugador;
     }
     

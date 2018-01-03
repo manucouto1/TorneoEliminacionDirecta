@@ -3,9 +3,9 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package matcher;
+package torneo.matcher;
 
-import dominio.jugador.Jugador;
+import dominio.jugador.JugadorValue;
 import java.util.Deque;
 import java.util.List;
 
@@ -15,6 +15,6 @@ import java.util.List;
  */
 public interface Matcher {
     
-    public Deque<Jugador> matchPlayers(Deque<Jugador> jugadores);
-    public Deque<Jugador> matchPlayers(List<Jugador> jugadores);
+    public Deque<JugadorValue> matchPlayers(Deque<JugadorValue> jugadores);
+    public Deque<JugadorValue> matchPlayers(List<JugadorValue> jugadores);
 }

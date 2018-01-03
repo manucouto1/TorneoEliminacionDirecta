@@ -3,9 +3,9 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package matcher;
+package torneo.matcher;
 
-import dominio.jugador.Jugador;
+import dominio.jugador.JugadorValue;
 import java.util.ArrayDeque;
 import java.util.Deque;
 import java.util.LinkedList;
@@ -18,24 +18,24 @@ import java.util.List;
 public class RandomeMatcher implements Matcher{
 
     @Override
-    public Deque<Jugador> matchPlayers(Deque<Jugador> jugadores) {
-        Deque<Jugador> result = new ArrayDeque<>();
-        List<Jugador> list = new LinkedList<>(jugadores);
+    public Deque<JugadorValue> matchPlayers(Deque<JugadorValue> jugadores) {
+        Deque<JugadorValue> result = new ArrayDeque<>();
+        List<JugadorValue> list = new LinkedList<>(jugadores);
         while(!list.isEmpty()){
             int aleatorio =  (int) Math.floor(Math.random()*(list.size()));
-            Jugador jugador = list.remove(aleatorio);
+            JugadorValue jugador = list.remove(aleatorio);
             result.add(jugador);
         }
         return result;
     }
 
     @Override
-    public Deque<Jugador> matchPlayers(List<Jugador> jugadores) {
-        Deque<Jugador> result = new ArrayDeque<>();
-        List<Jugador> list = new LinkedList<>(jugadores);
+    public Deque<JugadorValue> matchPlayers(List<JugadorValue> jugadores) {
+        Deque<JugadorValue> result = new ArrayDeque<>();
+        List<JugadorValue> list = new LinkedList<>(jugadores);
         while(!list.isEmpty()){
             int aleatorio =  (int) Math.floor(Math.random()*(list.size()));
-            Jugador jugador = list.remove(aleatorio);
+            JugadorValue jugador = list.remove(aleatorio);
             result.add(jugador);
         }
         return result;

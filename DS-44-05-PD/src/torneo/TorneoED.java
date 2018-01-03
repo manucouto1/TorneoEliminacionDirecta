@@ -7,12 +7,13 @@ package torneo;
 
 
 import java.util.Deque;
-import dominio.jugador.Jugador;
+import dominio.jugador.JugadorValue;
 import dominio.Partido;
 import dominio.Ronda;
 import dominio.estado.State;
 import dominio.jugador.CabezaSerie;
 import dominio.tipos.TournmentType;
+import torneo.matcher.Matcher;
 
 import java.util.ArrayDeque;
 import java.util.ArrayList;
@@ -24,7 +25,7 @@ import java.util.Map;
 import java.util.Queue;
 import java.util.logging.Level;
 import java.util.logging.Logger;
-import matcher.Matcher;
+
 import treeModel.Abb;
 import treeModel.Nodo;
 import treeModel.NodoJugador;
@@ -37,8 +38,9 @@ import treeModel.iterator.TreeIterator;
  */
 public  class TorneoED extends Abb implements TorneoValue{
     
-      
-    private Deque<Jugador> jugadores = new ArrayDeque<>();
+    private int id;
+    private Deque<JugadorValue> jugadores = new ArrayDeque<>();
+    private String codigo;
     private State estado;
     private TournmentType type;
     private int rondaEnJuego = 0;
@@ -47,7 +49,7 @@ public  class TorneoED extends Abb implements TorneoValue{
     
     // Constructors
     
-    public TorneoED(Deque<Jugador> jugadores, TournmentType type){
+    public TorneoED(Deque<JugadorValue> jugadores, TournmentType type){
         this.jugadores = jugadores;
         this.estado = State.EN_ESPERA;
         this.type = type;
@@ -60,12 +62,42 @@ public  class TorneoED extends Abb implements TorneoValue{
     
     // Getters & Setters 
     
-    public Deque<Jugador> getJugadores() {
+    public void setId(int id){
+    	this.id = id;
+    }
+    
+    public int getId(){
+    	return this.id;
+    }
+    
+    @Override
+	public void setCodigo(String codigo) {
+		this.codigo = codigo;
+		
+	}
+
+	@Override
+	public void setTipo(int tipo) {
+		this.type = TournmentType.values()[tipo];
+		
+	}
+
+	@Override
+	public void setTipo(TournmentType tipo) {
+		this.type = tipo;
+		
+	}
+    
+    public Deque<JugadorValue> getJugadores() {
         return jugadores;
     }
 
-    public void setJugadores(Deque<Jugador> jugadores) {
+    public void setJugadores(Deque<JugadorValue> jugadores) {
         this.jugadores = jugadores;
+    }
+    
+    public void setJugadores(List<JugadorValue> jugadores){
+    	this.jugadores.addAll(jugadores);
     }
 
     public int getRondaEnJuego() {
@@ -74,6 +106,14 @@ public  class TorneoED extends Abb implements TorneoValue{
 
     public void setRondaEnJuego(int rondaEnJuego) {
         this.rondaEnJuego = rondaEnJuego;
+    }
+    
+    public TournmentType getTipo(){
+    	return this.type;
+    }
+    
+    public String getCodigo(){
+    	return this.codigo;
     }
 
     public State getEstado() {
@@ -95,16 +135,16 @@ public  class TorneoED extends Abb implements TorneoValue{
     
     /// Logic Methods
     @Override
-    public void inscribirJugador(Jugador jugador){
+    public void inscribirJugador(JugadorValue jugador){
         if(this.estado.equals(State.EN_ESPERA)){
             this.jugadores.add(jugador);
         }
     }
     
     @Override
-    public <T extends Jugador> void inscribirJugadores(List<T> jugadores){
+    public <T extends JugadorValue> void inscribirJugadores(List<T> jugadores){
         if(this.estado.equals(State.EN_ESPERA)){
-            Deque<Jugador> j = new ArrayDeque<>(jugadores);
+            Deque<JugadorValue> j = new ArrayDeque<>(jugadores);
             j.addAll(this.jugadores);
             int altura = this.type.getAltura(jugadores.size());
             this.setAltura(altura);
@@ -186,8 +226,8 @@ public  class TorneoED extends Abb implements TorneoValue{
                 List <NodoPartido> nodos = getRonda(this.getRondaEnJuego()+1).getPartidos();
                 for(NodoPartido nodo: nodos){
                     Partido partido = nodo.getPartido();
-                    Jugador jugador1 = ((NodoPartido)nodo.getHojaIzquierda()).getPartido().ganador();
-                    Jugador jugador2 = ((NodoPartido)nodo.getHojaDerecha()).getPartido().ganador();
+                    JugadorValue jugador1 = ((NodoPartido)nodo.getHojaIzquierda()).getPartido().ganador();
+                    JugadorValue jugador2 = ((NodoPartido)nodo.getHojaDerecha()).getPartido().ganador();
                     partido.asignarEquipos(jugador1, jugador2);
                 }
                 this.setRondaEnJuego(this.getRondaEnJuego()+1);
@@ -263,7 +303,7 @@ public  class TorneoED extends Abb implements TorneoValue{
     
     /// Private Util Methods
 	
-	private <T extends Jugador> void generarTabla(int altura, int aux, Abb arbol, Deque<T> jugadores){
+	private <T extends JugadorValue> void generarTabla(int altura, int aux, Abb arbol, Deque<T> jugadores){
             if (altura == 2) {
 		arbol.addNodo(new NodoPartido(aux, new Partido("#MTCH_"+(altura+aux))));
 		arbol.addNodo(new NodoJugador(aux-1, jugadores.pop()));
@@ -304,7 +344,7 @@ public  class TorneoED extends Abb implements TorneoValue{
             System.out.print(tab+"} (fin resumen "+p.getCode()+")\n");
         }else if(nodo instanceof NodoJugador){
             String tab = tabs;
-            Jugador pl = ((NodoJugador)nodo).getJugador();
+            JugadorValue pl = ((NodoJugador)nodo).getJugador();
             if(pl instanceof CabezaSerie){
                 System.out.print(tab+pl.getName()+", "+pl.getYears()+" años, cabeza de serie\n");
             } else {
@@ -312,6 +352,8 @@ public  class TorneoED extends Abb implements TorneoValue{
             }
         }
     }
+
+		
 
     //
 
