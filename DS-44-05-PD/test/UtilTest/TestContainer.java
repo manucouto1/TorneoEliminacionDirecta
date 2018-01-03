@@ -6,6 +6,8 @@
 package UtilTest;
 
 import dominio.tipos.TournmentType;
+import new_tech_dev.development.container.Container;
+
 import static org.hamcrest.CoreMatchers.is;
 import static org.junit.Assert.assertThat;
 import static org.junit.Assert.assertTrue;
@@ -21,20 +23,22 @@ public class TestContainer {
     
     @Test
     public void createTorunmentTest() throws Exception {
-        TournmentCache c = new TournmentCache();
-        assertTrue(c.addTorneo("testTorneo", TournmentType.TED));
-        assertTrue(null!=c.getTorneo("testTorneo"));
-        c.listTorneos();
+    	Container c = new Container();
+        TournmentCache cache = new TournmentCache(c);
+        assertTrue(cache.addTorneo("testTorneo", TournmentType.TED));
+        assertTrue(null!=cache.getTorneo("testTorneo"));
+        cache.listTorneos();
         
     }
     
     @Test
     public void createTorunmentYaExistenteTest() {
-        TournmentCache c = new TournmentCache();
+    	Container c = new Container();
+        TournmentCache cache = new TournmentCache(c);
         
-        c.addTorneo("testTorneo", TournmentType.TED);
+        cache.addTorneo("testTorneo", TournmentType.TED);
         try {
-            c.getTorneo("testTorneo");
+        	cache.getTorneo("testTorneo");
         } catch(Exception e){
             assertThat(e.getMessage(), is(" Error: No existe este torneo"));
         }

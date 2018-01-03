@@ -1,17 +1,20 @@
 package dominio.entidades;
 
+
 public class Torneo {
 	
 	private int id;
 	private String nombre;
 	private int edad;
+	private int tipo;
 	private int estado;
+	
 	
 	public Torneo(){
 		
 	}
 	
-	public Torneo(int id, String nombre, int edad, int estado) {
+	public Torneo(int id, String nombre, int edad, int tipo, int estado) {
 		this.id = id;
 		this.nombre = nombre;
 		this.edad = edad;
@@ -49,7 +52,15 @@ public class Torneo {
 	public void setEstado(int estado) {
 		this.estado = estado;
 	}
-
+	
+	public int getTipo(){
+		return tipo;
+	}
+	
+	public void setTipo(int tipo){
+		this.tipo = tipo;
+	}
+	
 	@Override
 	public String toString() {
 		return "Torneo [id=" + id + ", nombre=" + nombre + ", edad=" + edad + ", estado=" + estado + "]";

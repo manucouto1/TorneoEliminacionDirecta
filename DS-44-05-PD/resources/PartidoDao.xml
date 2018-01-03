@@ -7,10 +7,10 @@
 	<query name="findOne">
 		<script>SELECT * FROM PARTIDO WHERE id = [id];</script>
 	</query>
-	<query name="add" var="participante">
+	<query name="add" var="partido">
 		<script>INSERT INTO PARTIDO VALUES ([partido.id],[partido.name]);</script>
 	</query>
 	<query name="delete" var="partido">
-		<script>DELETE FROM AUTOR WHERE ID = [partido.id];</script>
+		<script>DELETE FROM PARTIDO WHERE ID = [partido.id];</script>
 	</query>
 </querys>

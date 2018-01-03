@@ -6,7 +6,7 @@
 package manager;
 
 import dominio.Partido;
-import torneo.Torneo;
+import torneo.TorneoValue;
 
 /**
  *
@@ -14,7 +14,7 @@ import torneo.Torneo;
  */
 public interface PartidoManager{
     
-    public boolean preparePartido(String partido, Torneo torneo) throws Exception;
+    public boolean preparePartido(String partido, TorneoValue torneo) throws Exception;
     
     public void setMarcador(Partido partido, int local, int visitante) throws Exception;
     
@@ -22,5 +22,5 @@ public interface PartidoManager{
     
     public void finalizarPartido(Partido partido) throws Exception;
      
-    public Partido findPartido(Torneo torneo, String code) throws Exception;
+    public Partido findPartido(TorneoValue torneo, String code) throws Exception;
 }

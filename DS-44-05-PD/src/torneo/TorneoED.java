@@ -13,7 +13,7 @@ import dominio.Ronda;
 import dominio.estado.State;
 import dominio.jugador.CabezaSerie;
 import dominio.tipos.TournmentType;
-import iterator.TreeIterator;
+
 import java.util.ArrayDeque;
 import java.util.ArrayList;
 import java.util.HashMap;
@@ -29,12 +29,13 @@ import treeModel.Abb;
 import treeModel.Nodo;
 import treeModel.NodoJugador;
 import treeModel.NodoPartido;
+import treeModel.iterator.TreeIterator;
 
 /**
  *
  * @author manuc
  */
-public  class TorneoED extends Abb implements Torneo{
+public  class TorneoED extends Abb implements TorneoValue{
     
       
     private Deque<Jugador> jugadores = new ArrayDeque<>();
@@ -93,7 +94,6 @@ public  class TorneoED extends Abb implements Torneo{
     
     
     /// Logic Methods
-    
     @Override
     public void inscribirJugador(Jugador jugador){
         if(this.estado.equals(State.EN_ESPERA)){
@@ -312,7 +312,7 @@ public  class TorneoED extends Abb implements Torneo{
             }
         }
     }
-        
+
     //
 
    

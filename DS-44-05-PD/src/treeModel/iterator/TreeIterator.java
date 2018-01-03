@@ -3,7 +3,7 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package iterator;
+package treeModel.iterator;
 
 import java.util.Iterator;
 import java.util.LinkedList;

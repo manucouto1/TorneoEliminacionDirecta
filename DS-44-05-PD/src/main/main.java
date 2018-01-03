@@ -22,10 +22,10 @@ public class main {
     public static void main(String[] args) throws Exception {
     	
     	Container c = new Container();
-    	TournmentCache cache = new TournmentCache();
-    	
     	c.put(JugadorDao.class);
     	c.put(PartidoDao.class);
+    	
+    	TournmentCache cache = new TournmentCache(c);
     	
     	
     	

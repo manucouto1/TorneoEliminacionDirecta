@@ -10,7 +10,7 @@ import dominio.estado.State;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 import manager.PartidoManager;
-import torneo.Torneo;
+import torneo.TorneoValue;
 import treeModel.NodoJugador;
 import treeModel.NodoPartido;
 
@@ -21,7 +21,7 @@ import treeModel.NodoPartido;
 public class PartidoManagerImpl implements PartidoManager{
     
     @Override
-    public Partido findPartido(Torneo torneo, String code) throws Exception{
+    public Partido findPartido(TorneoValue torneo, String code) throws Exception{
     	Partido partido = torneo.findPartido(code).getPartido();
     	if(partido == null) {
     		
@@ -30,7 +30,7 @@ public class PartidoManagerImpl implements PartidoManager{
     }
 
     @Override
-    public boolean preparePartido(String partidoCode, Torneo torneo) throws Exception{
+    public boolean preparePartido(String partidoCode, TorneoValue torneo) throws Exception{
         
         NodoPartido partido = torneo.findPartido(partidoCode);
         

@@ -20,7 +20,8 @@ import java.util.List;
 import java.util.Map;
 import matcher.Matcher;
 import matcher.SeededMatcher;
-import torneo.Torneo;
+import new_tech_dev.development.container.Container;
+import torneo.TorneoValue;
 import treeModel.Nodo;
 import treeModel.NodoPartido;
 
@@ -38,16 +39,16 @@ import cache.TournmentCache;
  * @author manuc
  */
 public class TestPartido {
-    
-    private TournmentCache c = new TournmentCache();
-    private Torneo t;
+    private Container c;
+    private TournmentCache cache;
+    private TorneoValue t;
     private TorneoManager tmng = new TorneoManagerImpl();
     private PartidoManager pmng = new PartidoManagerImpl();
     
     @Before
     public void pre() throws Exception{
-        tmng.crearTorneo(c, "testTorneo", TournmentType.TED);
-        t=tmng.seleccionarTorneo(c, "testTorneo");
+    	cache = new TournmentCache(c);
+        tmng.crearTorneo(cache, "testTorneo", TournmentType.TED);
         Matcher matcher = new SeededMatcher();
         t.setMatcher(matcher);
         List<Jugador> test0 = Arrays.asList(new CabezaSerie.Builder("1",18).build(), 

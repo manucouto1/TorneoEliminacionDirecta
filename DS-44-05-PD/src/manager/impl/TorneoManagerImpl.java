@@ -13,7 +13,7 @@ import java.util.logging.Logger;
 
 import cache.TournmentCache;
 import manager.TorneoManager;
-import torneo.Torneo;
+import torneo.TorneoValue;
 
 /**
  *
@@ -27,7 +27,7 @@ public class TorneoManagerImpl implements TorneoManager{
     }
 
     @Override
-    public Torneo seleccionarTorneo(TournmentCache c, String nombre) {
+    public TorneoValue seleccionarTorneo(TournmentCache c, String nombre) {
         try {
             return c.getTorneo(nombre);
         } catch (Exception ex) {
@@ -37,27 +37,27 @@ public class TorneoManagerImpl implements TorneoManager{
     }
     
     @Override
-    public <T extends Jugador>  void inscribirJugador(Torneo torneo, T jugador) {
+    public <T extends Jugador>  void inscribirJugador(TorneoValue torneo, T jugador) {
         torneo.inscribirJugador(jugador);
     }
 
     @Override
-    public <T extends Jugador> void inscribirJugadores(Torneo torneo, List<T> jugadores) {
+    public <T extends Jugador> void inscribirJugadores(TorneoValue torneo, List<T> jugadores) {
         torneo.inscribirJugadores(jugadores);
     }
 
     @Override
-    public void prepararTorneo(Torneo t) throws Exception{
+    public void prepararTorneo(TorneoValue t) throws Exception{
         t.prepararTorneo();
     }
 
     @Override
-    public boolean iniciarTorneo(Torneo t) throws Exception{
+    public boolean iniciarTorneo(TorneoValue t) throws Exception{
         return t.iniciarTorneo();
     }
 
     @Override
-    public void printTable(Torneo t) throws Exception{
+    public void printTable(TorneoValue t) throws Exception{
         t.printTabla();
     }
 

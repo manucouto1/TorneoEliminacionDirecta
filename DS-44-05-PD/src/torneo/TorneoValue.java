@@ -18,7 +18,7 @@ import java.util.Map;
  *
  * @author manuc
  */
-public interface Torneo extends Iterable<Object>{
+public interface TorneoValue extends Iterable<Object>{
     public void inscribirJugador(Jugador jugador);
     public <T extends Jugador> void inscribirJugadores(List<T> jugadores);
     public void prepararTorneo() throws Exception;

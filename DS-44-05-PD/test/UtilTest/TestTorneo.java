@@ -19,12 +19,15 @@ import java.util.List;
 import matcher.Matcher;
 import matcher.RandomeMatcher;
 import matcher.SeededMatcher;
-import torneo.Torneo;
+import new_tech_dev.development.container.Container;
+import torneo.TorneoValue;
 
 import static org.hamcrest.CoreMatchers.is;
 import static org.junit.Assert.assertEquals;
 import static org.junit.Assert.assertThat;
 import static org.junit.Assert.assertTrue;
+
+import org.junit.Before;
 import org.junit.Test;
 
 import cache.TournmentCache;
@@ -35,32 +38,37 @@ import cache.TournmentCache;
  */
 public class TestTorneo {
     
-    private TournmentCache c = new TournmentCache();
-    private Torneo t;
+	private Container c = new Container();
+    private TournmentCache cache ;
+    private TorneoValue t;
     private TorneoManager tmng = new TorneoManagerImpl();
     
+    @Before
+    public void pre() throws Exception{
+    	cache = new TournmentCache(c);
+    }
     @Test
     public void tesCreateTorneoTEDTrue() throws Exception {
-        assertTrue(tmng.crearTorneo(c, "testTorneo", TournmentType.TED));
+        assertTrue(tmng.crearTorneo(cache, "testTorneo", TournmentType.TED));
     }
     
     @Test
     public void tesCreateTorneoTEDFalse() throws Exception {
-        tmng.crearTorneo(c, "testTorneo", TournmentType.TED);
-        assertTrue(!tmng.crearTorneo(c, "testTorneo", TournmentType.TED));
+        tmng.crearTorneo(cache, "testTorneo", TournmentType.TED);
+        assertTrue(!tmng.crearTorneo(cache, "testTorneo", TournmentType.TED));
     }
     
     @Test
     public void tesGetTorneo() throws Exception {
-        tmng.crearTorneo(c, "testTorneo", TournmentType.TED);
-        assertTrue(null != tmng.seleccionarTorneo(c, "testTorneo"));
+        tmng.crearTorneo(cache, "testTorneo", TournmentType.TED);
+        assertTrue(null != tmng.seleccionarTorneo(cache, "testTorneo"));
     }
     
     
     @Test
     public void tesGetTorneoException() throws Exception {
         try{
-            t = tmng.seleccionarTorneo(c, "testTorneo");
+            t = tmng.seleccionarTorneo(cache, "testTorneo");
             //fail("Expected an non existin tourment exception");
         }catch(Exception e){
             assertThat(e.getMessage(), is("  Error: No existe este torneo"));
@@ -69,8 +77,8 @@ public class TestTorneo {
     
     @Test
     public void testInscribirJugador() {
-        tmng.crearTorneo(c, "testTorneo", TournmentType.TED);
-        t=tmng.seleccionarTorneo(c, "testTorneo");
+        tmng.crearTorneo(cache, "testTorneo", TournmentType.TED);
+        t=tmng.seleccionarTorneo(cache, "testTorneo");
         Jugador p = new Jugador("1",18);
         tmng.inscribirJugador(t,p);
         assertEquals(t.getJugadores().getFirst(),p);
@@ -78,8 +86,8 @@ public class TestTorneo {
     
     @Test
     public void testInscribirJugadores() {
-        tmng.crearTorneo(c, "testTorneo", TournmentType.TED);
-        t=tmng.seleccionarTorneo(c, "testTorneo");
+        tmng.crearTorneo(cache, "testTorneo", TournmentType.TED);
+        t=tmng.seleccionarTorneo(cache, "testTorneo");
         List<Jugador> test0 = Arrays.asList(new CabezaSerie.Builder("1",18).build(), 
                 new CabezaSerie.Builder("2",18).build(), new CabezaSerie.Builder("3",18).build(), 
                 new Jugador("4",18), new Jugador("5",18), new Jugador("6",18), 
@@ -94,8 +102,8 @@ public class TestTorneo {
     
     @Test 
     public void testPrepararTorneo() throws Exception{
-        tmng.crearTorneo(c, "testTorneo", TournmentType.TED);
-        t=tmng.seleccionarTorneo(c, "testTorneo");
+        tmng.crearTorneo(cache, "testTorneo", TournmentType.TED);
+        t=tmng.seleccionarTorneo(cache, "testTorneo");
         Matcher matcher = new SeededMatcher();
         t.setMatcher(matcher);
         List<Jugador> test0 = Arrays.asList(new CabezaSerie.Builder("1",18).build(), 
@@ -112,8 +120,8 @@ public class TestTorneo {
     
     @Test 
     public void testPreparaTorneoException() {
-        tmng.crearTorneo(c, "testTorneo", TournmentType.TED);
-        t=tmng.seleccionarTorneo(c, "testTorneo");
+        tmng.crearTorneo(cache, "testTorneo", TournmentType.TED);
+        t=tmng.seleccionarTorneo(cache, "testTorneo");
         Matcher matcher = new RandomeMatcher();
         t.setMatcher(matcher);
         List<Jugador> test0 = Arrays.asList(new CabezaSerie.Builder("1",18).build(), 
@@ -133,8 +141,8 @@ public class TestTorneo {
     
     @Test
     public void testIniciarTorneo() throws Exception{
-        tmng.crearTorneo(c, "testTorneo", TournmentType.TED);
-        t=tmng.seleccionarTorneo(c, "testTorneo");
+        tmng.crearTorneo(cache, "testTorneo", TournmentType.TED);
+        t=tmng.seleccionarTorneo(cache, "testTorneo");
         Matcher matcher = new SeededMatcher();
         t.setMatcher(matcher);
         List<Jugador> test0 = Arrays.asList(new CabezaSerie.Builder("1",18).build(), 
@@ -151,8 +159,8 @@ public class TestTorneo {
     
     @Test
     public void testIniciarTorneoException() {
-        tmng.crearTorneo(c, "testTorneo", TournmentType.TED);
-        t=tmng.seleccionarTorneo(c, "testTorneo");
+        tmng.crearTorneo(cache, "testTorneo", TournmentType.TED);
+        t=tmng.seleccionarTorneo(cache, "testTorneo");
         Matcher matcher = new SeededMatcher();
         t.setMatcher(matcher);
         List<Jugador> test0 = Arrays.asList(new CabezaSerie.Builder("1",18).build(), 
@@ -172,8 +180,8 @@ public class TestTorneo {
     
     @Test
     public void testPrintTabla() throws Exception{
-        tmng.crearTorneo(c, "testTorneo", TournmentType.TED);
-        t=tmng.seleccionarTorneo(c, "testTorneo");
+        tmng.crearTorneo(cache, "testTorneo", TournmentType.TED);
+        t=tmng.seleccionarTorneo(cache, "testTorneo");
         Matcher matcher = new SeededMatcher();
         t.setMatcher(matcher);
         List<Jugador> test0 = Arrays.asList(new CabezaSerie.Builder("1",18).build(), 

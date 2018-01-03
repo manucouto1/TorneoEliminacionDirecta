@@ -2,15 +2,15 @@
 
 <querys>
 	<query name="findAll">
-		<script>SELECT * FROM PARTICIPANTE;</script>
+		<script>SELECT * FROM JUGADOR;</script>
 	</query>
 	<query name="findOne">
-		<script>SELECT * FROM PARTICIPANTE WHERE id = [id];</script>
+		<script>SELECT * FROM JUGADOR WHERE id = [id];</script>
 	</query>
-	<query name="add" var="participante">
-		<script>INSERT INTO PARTICIPANTE VALUES ([participante.id],[participante.name]);</script>
+	<query name="add" var="jugador">
+		<script>INSERT INTO JUGADOR VALUES ([jugador.id],[jugador.name]);</script>
 	</query>
-	<query name="delete" var="participante">
-		<script>DELETE FROM AUTOR WHERE ID = [participante.id];</script>
+	<query name="delete" var="jugador">
+		<script>DELETE FROM JUGADOR WHERE ID = [jugador.id];</script>
 	</query>
 </querys>

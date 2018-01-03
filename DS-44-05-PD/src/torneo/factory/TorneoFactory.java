@@ -5,7 +5,7 @@
  */
 package torneo.factory;
 
-import torneo.Torneo;
+import torneo.TorneoValue;
 
 /**
  *
@@ -13,7 +13,7 @@ import torneo.Torneo;
  */
 public abstract class TorneoFactory {
     
-    public abstract Torneo get();
+    public abstract TorneoValue get();
         
       
 }

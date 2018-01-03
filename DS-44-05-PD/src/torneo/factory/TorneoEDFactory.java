@@ -6,7 +6,7 @@
 package torneo.factory;
 
 import dominio.tipos.TournmentType;
-import torneo.Torneo;
+import torneo.TorneoValue;
 import torneo.TorneoED;
 
 /**
@@ -16,7 +16,7 @@ import torneo.TorneoED;
 public class TorneoEDFactory extends TorneoFactory{
 
     @Override
-    public Torneo get() {
+    public TorneoValue get() {
         return new TorneoED(TournmentType.TED);
     }
     

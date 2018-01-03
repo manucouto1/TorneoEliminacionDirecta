@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<querys>
+	<query name="findAll">
+		<script>SELECT * FROM TORNEO;</script>
+	</query>
+	<query name="findOne">
+		<script>SELECT * FROM TORNEO WHERE id = [id];</script>
+	</query>
+	<query name="findByCode">
+		<script>SELECT * FROM TORNEO WHERE code = [code];</script>
+	</query>
+	<query name="add" var="torneo">
+		<script>INSERT INTO TORNEO VALUES ([torneo.id],[torneo.code]);</script>
+	</query>
+	<query name="delete" var="torneo">
+		<script>DELETE FROM TORNEO WHERE ID = [torneo.id];</script>
+	</query>
+	<query name="deleteByCode" var="torneo">
+		<script>DELETE FROM TORNEO WHERE CODE = [torneo.code]</script>
+	</query>
+</querys>

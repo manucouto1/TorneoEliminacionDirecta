@@ -7,7 +7,8 @@ package cache;
 
 //import dominio.TorneoED;
 import dominio.tipos.TournmentType;
-import torneo.Torneo;
+import new_tech_dev.development.container.Container;
+import torneo.TorneoValue;
 import torneo.factory.TorneoEDFactory;
 import torneo.factory.TorneoFactory;
 
@@ -20,8 +21,13 @@ import java.util.Map;
  */
 public class TournmentCache {
     
-        private final Map<String, Torneo> tournments = new HashMap<>();
+        private final Map<String, TorneoValue> tournments = new HashMap<>();
         private boolean empty = true;
+        private Container c;
+        
+        public TournmentCache(Container c){
+        	this.c = c;
+        }
 //        private TorneoFactory factory;
         
         public boolean addTorneo(String nombre, TournmentType tipo) {
@@ -29,12 +35,12 @@ public class TournmentCache {
             if(null != this.tournments.get(nombre)){
                 return false;
             } else {
-                this.tournments.put(nombre, (Torneo) getFactory(tipo).get());
+                this.tournments.put(nombre, (TorneoValue) getFactory(tipo).get());
                 return true;
             }
         }
         
-        public Torneo getTorneo(String nombre) throws Exception{
+        public TorneoValue getTorneo(String nombre) throws Exception{
             if(null != this.tournments.get(nombre))
                 return this.tournments.get(nombre);
             else {
