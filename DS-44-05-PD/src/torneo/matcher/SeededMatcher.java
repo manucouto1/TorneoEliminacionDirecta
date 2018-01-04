@@ -24,7 +24,7 @@ public class SeededMatcher implements Matcher{
         List<JugadorValue> list = new LinkedList<>();
         List<JugadorValue> listC = new LinkedList<>();
         jugadores.forEach((jugador) -> {
-            System.out.println("@@## JugadorName > "+jugador.getName());
+//            System.out.println("@@## JugadorName > "+jugador.getName());
             if(jugador instanceof CabezaSerie){
                 listC.add(jugador);
             }else{
@@ -33,11 +33,11 @@ public class SeededMatcher implements Matcher{
         });
         int counter = 0;
         int aux = Math.round(list.size()/listC.size());
-        System.out.println("@@## list > "+list.size()+" listC > "+listC.size());
+//        System.out.println("@@## list > "+list.size()+" listC > "+listC.size());
                 
                 
         while(!listC.isEmpty() || !list.isEmpty()){
-            System.out.println(" @@## aux >> "+aux+" > % > "+counter%aux);
+//            System.out.println(" @@## aux >> "+aux+" > % > "+counter%aux);
             int aleatorio1 =  (int) Math.floor(Math.random()*(list.size()));
             int aleatorio =  (int) Math.floor(Math.random()*(listC.size()));
             JugadorValue jugador = null ;
@@ -61,7 +61,7 @@ public class SeededMatcher implements Matcher{
         List<JugadorValue> list = new LinkedList<>();
         List<JugadorValue> listC = new LinkedList<>();
         jugadores.forEach((jugador) -> {
-            System.out.println("@@## JugadorName > "+jugador.getName());
+//            System.out.println("@@## JugadorName > "+jugador.getName());
             if(jugador instanceof CabezaSerie){
                 listC.add(jugador);
             }else{
@@ -70,11 +70,11 @@ public class SeededMatcher implements Matcher{
         });
         int counter = 0;
         int aux = Math.round(list.size()/listC.size());
-        System.out.println("@@## list > "+list.size()+" listC > "+listC.size());
+//        System.out.println("@@## list > "+list.size()+" listC > "+listC.size());
                 
                 
         while(!listC.isEmpty() || !list.isEmpty()){
-            System.out.println(" @@## aux >> "+aux+" > % > "+counter%aux);
+//            System.out.println(" @@## aux >> "+aux+" > % > "+counter%aux);
             int aleatorio1 =  (int) Math.floor(Math.random()*(list.size()));
             int aleatorio =  (int) Math.floor(Math.random()*(listC.size()));
             JugadorValue jugador = null ;

@@ -21,30 +21,24 @@ public class TorneoFacadeImpl implements TorneoFacade{
 	public TorneoFacadeImpl (Container container){
 		this.torneoDao = container.getDao(TorneoDao.class);
 		this.jugadorDao = container.getDao(JugadorDao.class);
+		this.factory = new Factory();
 	}
 
 	@Override
-	public void add(TorneoValue e) {
-		torneoDao.add(new Torneo.Builder(e).build());
+	public Object add(TorneoValue e) {
+		try {
+			Torneo torneo = (Torneo) torneoDao.add(new Torneo.Builder(e).setId(torneoDao.getAutoIncrementValue()).build());
+			return convertTorneo(torneo);
+		} catch (Exception e1) {
+			e1.printStackTrace();
+		}
+		return null;
 	}
 
 	@Override
 	public TorneoValue findOne(TorneoValue e) throws Exception {
-		
 		Torneo torneo = torneoDao.findOne(new Torneo.Builder(e).setId(e.getId()).build());
-		List<Jugador> jugadores = jugadorDao.findByTorneo(torneo.getId());
-		List<JugadorValue>jugadoresValue = new ArrayList<>();
-		for(Jugador jugador : jugadores){
-			jugadoresValue.add(new JugadorValue.Builder(jugador)
-					.setId(jugador.getId()).build());
-		}
-		TorneoValue torneoValue = factory.getFactory(torneo.getTipo()).get();
-		torneoValue.setCodigo(torneo.getCodigo());
-		torneoValue.setId(torneo.getId());
-		torneoValue.setTipo(torneo.getTipo());
-		torneoValue.setJugadores(jugadoresValue);
-		
-		return null;
+		return convertTorneo(torneo);
 	}
 
 	@Override
@@ -75,6 +69,20 @@ public class TorneoFacadeImpl implements TorneoFacade{
 		return null;
 	}
 	
+	private TorneoValue convertTorneo(Torneo torneo) throws Exception {
+//		List<Jugador> jugadores = jugadorDao.findByTorneo(torneo.getId());
+		List<JugadorValue>jugadoresValue = new ArrayList<>();
+//		for(Jugador jugador : jugadores){
+//			jugadoresValue.add(new JugadorValue.Builder(jugador)
+//					.setId(jugador.getId()).build());
+//		}
+		TorneoValue torneoValue = factory.getFactory(torneo.getTipo()).get();
+		torneoValue.setCodigo((torneo.getCodigo()==null)?torneo.getCodigo():null);
+		torneoValue.setId(torneo.getId());
+		torneoValue.setTipo(torneo.getTipo());
+		torneoValue.setJugadores(jugadoresValue);
+		return torneoValue;
+	}
 	
 
 }

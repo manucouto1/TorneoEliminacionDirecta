@@ -41,7 +41,7 @@ public class Abb <T extends Nodo>{
             
             nodo.setNivel(1);
             this.setRaiz(nodo);
-            System.out.println(" -- Nodo Raiz >> "+nodo);
+//            System.out.println(" -- Nodo Raiz >> "+nodo);
         }
         else {
             if ( nodo.getPeso() <= raiz.getPeso() ) {
@@ -49,7 +49,7 @@ public class Abb <T extends Nodo>{
                     nodo.setNivel(raiz.getNivel()+1);
                     nodo.setPadre(raiz);
                     raiz.setHojaIzquierda(nodo);
-                    System.out.println(" -- hojaIzquierda > "+nodo);
+//                    System.out.println(" -- hojaIzquierda > "+nodo);
                 }
                 else {
                     addNodo( nodo , raiz.getHojaIzquierda() );
@@ -60,7 +60,7 @@ public class Abb <T extends Nodo>{
                     nodo.setNivel(raiz.getNivel()+1);
                     nodo.setPadre(raiz);
                     raiz.setHojaDerecha(nodo);
-                    System.out.println(" -- hojaDerecha > "+nodo);
+//                    System.out.println(" -- hojaDerecha > "+nodo);
                 }
                 else {
                     addNodo( nodo, raiz.getHojaDerecha() );

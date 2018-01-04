@@ -13,7 +13,7 @@ CREATE TABLE `Estado_Partido` (
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8
 
 CREATE TABLE `Jugador` (
-  `id` int(9) NOT NULL,
+  `id` int(9) NOT NULL AUTO_INCREMENT,
   `nombre` varchar(15) DEFAULT NULL,
   `edad` int(14) DEFAULT NULL,
   `tipo_jugador_id` int(9) DEFAULT NULL,
@@ -23,7 +23,7 @@ CREATE TABLE `Jugador` (
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8
 
 CREATE TABLE `Partido` (
-  `id` varchar(15) NOT NULL,
+  `id` varchar(15) NOT NULL AUTO_INCREMENT,
   `code` varchar(15) DEFAULT NULL,
   `jugador_local_id` int(9) DEFAULT NULL,
   `jugador_visitante_id` int(9) DEFAULT NULL,
@@ -41,7 +41,7 @@ CREATE TABLE `Partido` (
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8
 
 CREATE TABLE `Torneo` (
-  `id` int(9) NOT NULL,
+  `id` int(9) NOT NULL AUTO_INCREMENT ,
   `code` varchar(15) DEFAULT NULL,
   PRIMARY KEY (`id`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8

@@ -57,15 +57,11 @@ public class PersistenceTest {
     	
 	}
 	@Test
-	public void torneoFacadeTest() {
+	public void torneoFacadeTest() throws Exception {
 		TorneoFacadeImpl facade = new TorneoFacadeImpl(c);
-		facade.add(tmng.seleccionarTorneo(cache, "testTorneo"));
-		try {
-			facade.findOne(tmng.seleccionarTorneo(cache, "testTorneo"));
-		} catch (Exception e) {
-			// TODO Auto-generated catch block
-			e.printStackTrace();
-		}
+		TorneoValue torneo = tmng.seleccionarTorneo(cache, "testTorneo");
+		torneo.setId(((TorneoValue)facade.add(torneo)).getId());
+		facade.findOne(tmng.seleccionarTorneo(cache, "testTorneo"));
 	}
 
 }
