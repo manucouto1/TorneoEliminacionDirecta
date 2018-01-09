@@ -16,9 +16,20 @@
 		<script>SELECT * FROM JUGADOR WHERE id = [jugador.id];</script>
 	</query>
 	<query name="add" var="jugador">
-		<script>INSERT INTO JUGADOR VALUES ([jugador.id],[jugador.name]);</script>
+		<script>
+		INSERT INTO JUGADOR (NOMBRE, EDAD, TIPO_JUGADOR_ID) VALUES ([jugador.nombre],[jugador.edad],[jugador.tipo]);
+		</script>
 	</query>
 	<query name="delete" var="jugador">
 		<script>DELETE FROM JUGADOR WHERE ID = [jugador.id];</script>
+	</query>
+	
+	<query name="getAutoIncrementValue">
+		<script>
+		SELECT `AUTO_INCREMENT` 
+		FROM  INFORMATION_SCHEMA.TABLES 
+		WHERE TABLE_SCHEMA = 'testHibernate' 
+		AND   TABLE_NAME   = 'jugador';
+		</script>
 	</query>
 </querys>

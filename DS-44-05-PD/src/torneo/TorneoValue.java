@@ -29,6 +29,7 @@ public interface TorneoValue extends Iterable<Object>{
 	public TournmentType getTipo();
 	public void setTipo(int tipo);
 	public void setTipo(TournmentType tipo);
+	public void setEstado(int estado);
 	public void setJugadores(List<JugadorValue> jugadores);
 	
     public void inscribirJugador(JugadorValue jugador);

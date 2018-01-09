@@ -5,7 +5,7 @@
  */
 package dominio.jugador;
 
-
+import dominio.tipos.PlayerType;
 
 /**
  *
@@ -14,16 +14,18 @@ package dominio.jugador;
 public final class CabezaSerie extends JugadorValue{
     
     private CabezaSerie(Builder builder) {
-        super("CabezaSerie "+builder.name, builder.years);
+        super("CabezaSerie "+builder.name, builder.years, builder.tipo);
     }
     
     public static class Builder {
         private final String name;
         private final int years;
+        private final PlayerType tipo;
         
         public Builder(String name, int years){
             this.name = name;
             this.years = years;
+            this.tipo = PlayerType.CABEZA_SERIE;
         }
         
         public CabezaSerie build(){

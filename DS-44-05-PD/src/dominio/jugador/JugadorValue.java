@@ -14,11 +14,16 @@ import dominio.tipos.PlayerType;
  */
 public class JugadorValue {
     
-	private int id;
+	private Integer id;
     private final String name;
-    private final int years;
-    private PlayerType tipo;
+    private final Integer years;
+    private PlayerType tipo = PlayerType.NORMAL;
     
+    public JugadorValue(String name, int years, PlayerType tipo) {
+        this.name = "Jugador "+name;
+        this.years = years;
+        this.tipo = tipo;
+    }
     public JugadorValue(String name, int years) {
         this.name = "Jugador "+name;
         this.years = years;
@@ -37,6 +42,10 @@ public class JugadorValue {
     
     public int getYears() {
         return years;
+    }
+    
+    public PlayerType getType() {
+    	return tipo;
     }
     
     public static class Builder{
@@ -63,4 +72,9 @@ public class JugadorValue {
 		}
 	}
 
+	@Override
+	public String toString() {
+		return "JugadorValue [id=" + id + ", name=" + name + ", years=" + years + ", tipo=" + tipo + "]";
+	}
+    
 }

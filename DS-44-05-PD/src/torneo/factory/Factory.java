@@ -4,8 +4,8 @@ import dominio.tipos.TournmentType;
 
 public class Factory {
 	
-	private final int TORNEO_ELIMINACION_DIRECTA = 1;
-	private final int TORNEO_MULTY_FASE = 2;
+	private final int TORNEO_ELIMINACION_DIRECTA = 0;
+	private final int TORNEO_MULTY_FASE = 1;
 	
 	public TorneoFactory getFactory(TournmentType tipo) throws Exception{
 		

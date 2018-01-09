@@ -18,7 +18,12 @@
 	</query>
 	<query name="add" var="torneo">
 		<script>
-		INSERT INTO TORNEO (CODE) VALUES ([torneo.codigo]);
+		INSERT INTO TORNEO (CODE,ESTADO_TORNEO_ID) VALUES ([torneo.codigo],[torneo.estado]);
+		</script>
+	</query>
+	<query name="addJugador" var="torneo, jugador">
+		<script>
+		INSERT INTO TORNEO_JUGADOR (ID_TORNEO,ID_JUGADOR) VALUES ([torneo.id],[jugador.id]); 
 		</script>
 	</query>
 	<query name="delete" var="torneo">
@@ -28,7 +33,7 @@
 	</query>
 	<query name="deleteByCode" var="torneo">
 		<script>
-		DELETE FROM TORNEO WHERE CODE = [torneo.codigo]
+		DELETE FROM TORNEO WHERE CODE = [torneo.codigo];
 		</script>
 	</query>
 	<query name="getAutoIncrementValue">

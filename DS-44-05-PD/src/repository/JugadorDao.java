@@ -7,5 +7,6 @@ import new_tech_dev.development.base_dao.GenericDao;
 
 public interface JugadorDao extends GenericDao<Jugador>{
 	
-	public List<Jugador> findByTorneo(int torneo);
+	public List<Jugador> findByTorneo(Integer torneo);
+	public int getAutoIncrementValue();
 }

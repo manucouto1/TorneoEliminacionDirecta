@@ -10,19 +10,19 @@ package dominio.tipos;
  * @author manuc
  */
 public enum PlayerType {
-    NORMAL(1),CABEZA_SERIE(2);
+    NORMAL(0),CABEZA_SERIE(1);
     
-    private int id;
+    private Integer id;
     private String name;
     
     
-    PlayerType(int id) {
-        String[] names = {"","Jugador normal","Cabeza de serie"};
+    PlayerType(Integer id) {
+        String[] names = {"Jugador normal","Cabeza de serie"};
         this.id = id;
         this.name = names[this.id]; 
     }
     
-    public int getId(){
+    public Integer getId(){
     	return this.id;
     }
     

@@ -23,6 +23,7 @@ import java.util.LinkedList;
 import java.util.List;
 import java.util.Map;
 import java.util.Queue;
+import java.util.concurrent.SynchronousQueue;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 
@@ -68,6 +69,11 @@ public  class TorneoED extends Abb implements TorneoValue{
     
     public int getId(){
     	return this.id;
+    }
+    
+    public void setEstado(int estado){
+    	System.out.println(" @@## id > "+(estado-1)+" estado > "+State.values()[estado-1]);
+    	this.estado = State.values()[estado];
     }
     
     @Override

@@ -26,9 +26,15 @@ public class TorneoFacadeImpl implements TorneoFacade{
 
 	@Override
 	public Object add(TorneoValue e) {
+		Torneo torneo = new Torneo.Builder(e).setId(torneoDao.getAutoIncrementValue()).build();
 		try {
-			Torneo torneo = (Torneo) torneoDao.add(new Torneo.Builder(e).setId(torneoDao.getAutoIncrementValue()).build());
-			return convertTorneo(torneo);
+			Torneo torneo2 = (Torneo) torneoDao.add(torneo);
+			for(JugadorValue jugadorValue : e.getJugadores()){
+				Jugador jugador = new Jugador.Builder(jugadorValue).setId(jugadorDao.getAutoIncrementValue()).build();
+				jugadorDao.add(jugador);
+				torneoDao.addJugador(torneo, jugador);
+			}
+			return convertTorneo(torneo2);
 		} catch (Exception e1) {
 			e1.printStackTrace();
 		}
@@ -70,16 +76,13 @@ public class TorneoFacadeImpl implements TorneoFacade{
 	}
 	
 	private TorneoValue convertTorneo(Torneo torneo) throws Exception {
-//		List<Jugador> jugadores = jugadorDao.findByTorneo(torneo.getId());
 		List<JugadorValue>jugadoresValue = new ArrayList<>();
-//		for(Jugador jugador : jugadores){
-//			jugadoresValue.add(new JugadorValue.Builder(jugador)
-//					.setId(jugador.getId()).build());
-//		}
 		TorneoValue torneoValue = factory.getFactory(torneo.getTipo()).get();
 		torneoValue.setCodigo((torneo.getCodigo()==null)?torneo.getCodigo():null);
 		torneoValue.setId(torneo.getId());
 		torneoValue.setTipo(torneo.getTipo());
+		torneoValue.setEstado(torneo.getEstado());
+		
 		torneoValue.setJugadores(jugadoresValue);
 		return torneoValue;
 	}
