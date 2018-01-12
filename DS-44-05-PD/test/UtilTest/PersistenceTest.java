@@ -60,10 +60,12 @@ public class PersistenceTest {
 		TorneoFacadeImpl facade = new TorneoFacadeImpl(c);
 		TorneoValue torneo = tmng.seleccionarTorneo(cache, "testTorneo");
 		torneo.setId(((TorneoValue)facade.add(torneo)).getId());
-		assertEquals(torneo.getId(),facade.findOne(tmng.seleccionarTorneo(cache, "testTorneo")).getId());
-		assertEquals(torneo.getCodigo(),facade.findOne(tmng.seleccionarTorneo(cache, "testTorneo")).getCodigo());
-		assertEquals(torneo.getEstado(),facade.findOne(tmng.seleccionarTorneo(cache, "testTorneo")).getEstado());
-		assertEquals(torneo.getTipo(),facade.findOne(tmng.seleccionarTorneo(cache, "testTorneo")).getTipo());
+		TorneoValue torneoPersisted = facade.findOne(tmng.seleccionarTorneo(cache, "testTorneo"));
+		assertEquals(torneo.getId(),torneoPersisted.getId());
+		assertEquals(torneo.getCodigo(),torneoPersisted.getCodigo());
+		assertEquals(torneo.getEstado(),torneoPersisted.getEstado());
+		assertEquals(torneo.getTipo(),torneoPersisted.getTipo());
+		assertEquals(torneo.getJugadores().size(),torneoPersisted.getJugadores().size());
 	}
 
 }

@@ -9,6 +9,7 @@ import cache.TournmentCache;
 import new_tech_dev.development.container.Container;
 import repository.JugadorDao;
 import repository.PartidoDao;
+import util.UtilSceneGenerator;
 
 /**
  *
@@ -28,7 +29,7 @@ public class main {
 //    	TournmentCache cache = new TournmentCache(c);
     	
     	
-    	
+    	UtilSceneGenerator generator = new UtilSceneGenerator("testScene");
     	
     	
     }

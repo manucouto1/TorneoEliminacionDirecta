@@ -26,6 +26,11 @@
 		INSERT INTO TORNEO_JUGADOR (ID_TORNEO,ID_JUGADOR) VALUES ([torneo.id],[jugador.id]); 
 		</script>
 	</query>
+	<query name="findJugadores" var="torneo">
+		<script>
+		SELECT ID_JUGADOR FROM TORNEO_JUGADOR WHERE ID_TORNEO = [torneo.id];
+		</script>
+	</query>
 	<query name="delete" var="torneo">
 		<script>
 		DELETE FROM TORNEO WHERE ID = [torneo.id];
