@@ -1,0 +1,57 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<querys>
+	<query name="findAll">
+		<script>
+		SELECT * FROM TORNEO;
+		</script>
+	</query>
+	<query name="findOne" var="torneo">
+		<script>
+		SELECT * FROM TORNEO WHERE id = [torneo.id];
+		</script>
+	</query>
+	<query name="findByCode">
+		<script>
+		SELECT * FROM TORNEO WHERE CODE = [codigo];
+		</script>
+	</query>
+	<query name="add" var="torneo">
+		<script>
+		INSERT INTO TORNEO (CODE,ESTADO_TORNEO_ID) VALUES ([torneo.codigo],[torneo.estado]);
+		</script>
+	</query>
+	<query name="addJugador" var="torneo, jugador">
+		<script>
+		INSERT INTO TORNEO_JUGADOR (ID_TORNEO,ID_JUGADOR) VALUES ([torneo.id],[jugador.id]); 
+		</script>
+	</query>
+	<query name="addPartido" var="torneo, partido">
+		<script>
+		INSERT INTO TORNEO_PARTIDO (ID_TORNEO,ID_PARTIDO) VALUES ([torneo.id],[partido.id])
+		</script>
+	</query>
+	<query name="findJugadores" var="torneo">
+		<script>
+		SELECT ID_JUGADOR FROM TORNEO_JUGADOR WHERE ID_TORNEO = [torneo.id];
+		</script>
+	</query>
+	<query name="delete" var="torneo">
+		<script>
+		DELETE FROM TORNEO WHERE ID = [torneo.id];
+		</script>
+	</query>
+	<query name="deleteByCode" var="torneo">
+		<script>
+		DELETE FROM TORNEO WHERE CODE = [torneo.codigo];
+		</script>
+	</query>
+	<query name="getAutoIncrementValue">
+		<script>
+		SELECT `AUTO_INCREMENT` 
+		FROM  INFORMATION_SCHEMA.TABLES 
+		WHERE TABLE_SCHEMA = 'testHibernate' 
+		AND   TABLE_NAME   = 'torneo';
+		</script>
+	</query>
+</querys>

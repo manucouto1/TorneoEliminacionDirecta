@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<querys>
+	<query name="findAll">
+		<script>SELECT * FROM PARTIDO;</script>
+	</query>
+	<query name="findOne">
+		<script>SELECT * FROM PARTIDO WHERE id = [id];</script>
+	</query>
+	<query name="findByTorneo" var="torneo">
+		<script>SELECT * FROM 
+				PARTIDO WHERE ID IN (SELECT ID_PARTIDO FROM TORNEO_PARTIDO WHERE ID_TORNEO = [torneo])</script>
+	</query>
+	<query name="add" var="partido">
+		<script>INSERT INTO PARTIDO VALUES ([partido.id],[partido.name]);</script>
+	</query>
+	<query name="delete" var="partido">
+		<script>DELETE FROM PARTIDO WHERE ID = [partido.id];</script>
+	</query>
+</querys>
