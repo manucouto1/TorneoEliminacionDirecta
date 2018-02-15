@@ -18,7 +18,7 @@ import dominio.torneo.matcher.SeededMatcher;
 import facade.torneo.TorneoFacadeImpl;
 import manager.TorneoManager;
 import manager.impl.TorneoManagerImpl;
-import new_tech_dev.development.container.Container;
+import new_tech_dev.development.application_god.application_contaier.Container;
 import repository.JugadorDao;
 import repository.PartidoDao;
 import repository.TorneoDao;

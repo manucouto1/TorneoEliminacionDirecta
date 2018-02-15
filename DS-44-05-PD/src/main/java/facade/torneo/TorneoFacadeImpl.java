@@ -9,7 +9,7 @@ import dominio.entidades.Torneo;
 import dominio.entidades.torneo.TorneoValue;
 import dominio.jugador.JugadorValue;
 import dominio.torneo.factory.Factory;
-import new_tech_dev.development.container.Container;
+import new_tech_dev.development.application_god.application_contaier.Container;
 import repository.JugadorDao;
 import repository.PartidoDao;
 import repository.TorneoDao;
@@ -32,7 +32,7 @@ public class TorneoFacadeImpl implements TorneoFacade{
 	public Object add(TorneoValue e) {
 		Torneo torneo = new Torneo.Builder(e).setId(torneoDao.getAutoIncrementValue()).build();
 		try {
-			Torneo torneo2 = (Torneo) torneoDao.add(torneo);
+			torneoDao.add(torneo);
 			for(JugadorValue jugadorValue : e.getJugadores()){
 				Jugador jugador = new Jugador.Builder(jugadorValue).setId(jugadorDao.getAutoIncrementValue()).build();
 				jugadorDao.add(jugador);
@@ -42,7 +42,7 @@ public class TorneoFacadeImpl implements TorneoFacade{
 //				
 //			}
 			
-			return convertTorneo(torneo2,new ArrayList<>(e.getJugadores()));
+			return convertTorneo(torneo,new ArrayList<>(e.getJugadores()));
 		} catch (Exception e1) {
 			e1.printStackTrace();
 		}
@@ -51,7 +51,7 @@ public class TorneoFacadeImpl implements TorneoFacade{
 
 	@Override
 	public TorneoValue findOne(TorneoValue e) throws Exception {
-		Torneo torneo = torneoDao.findOne(new Torneo.Builder(e).setId(e.getId()).build());
+		Torneo torneo = torneoDao.findOne(e.getId());
 		List<Jugador> jugadorList = jugadorDao.findByTorneo(torneo.getId());
 		List<JugadorValue> jugadoresValue = new ArrayList<JugadorValue>();
 		for(Jugador jugador: jugadorList){

@@ -3,7 +3,7 @@ package dominio.entidades;
 import java.util.List;
 
 import dominio.entidades.torneo.TorneoValue;
-import new_tech_dev.development.base_entity.BaseEntity;
+import new_tech_dev.development.base_shit.base_entity.BaseEntity;
 
 public class Torneo extends BaseEntity{
 	

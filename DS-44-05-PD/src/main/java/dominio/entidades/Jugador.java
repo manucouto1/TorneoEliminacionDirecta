@@ -1,7 +1,7 @@
 package dominio.entidades;
 
 import dominio.jugador.JugadorValue;
-import new_tech_dev.development.base_entity.BaseEntity;
+import new_tech_dev.development.base_shit.base_entity.BaseEntity;
 
 public class Jugador extends BaseEntity{
 	

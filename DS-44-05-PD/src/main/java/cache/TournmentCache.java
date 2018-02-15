@@ -12,7 +12,7 @@ import dominio.entidades.tipos.TournmentType;
 import dominio.entidades.torneo.TorneoValue;
 import dominio.torneo.factory.TorneoEDFactory;
 import dominio.torneo.factory.TorneoFactory;
-import new_tech_dev.development.container.Container;
+import new_tech_dev.development.application_god.application_contaier.Container;
 
 
 /**

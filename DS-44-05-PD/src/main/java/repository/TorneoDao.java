@@ -4,9 +4,9 @@ import java.util.List;
 
 import dominio.entidades.Jugador;
 import dominio.entidades.Torneo;
-import new_tech_dev.development.base_dao.GenericDao;
+import new_tech_dev.development.base_shit.base_dao.GenericDao;
 
-public interface TorneoDao extends GenericDao<Torneo>{
+public interface TorneoDao extends GenericDao<Torneo,Integer>{
 	public void deleteByCode(String code);
 	public Torneo findByCode(String code);
 	public int getAutoIncrementValue();
